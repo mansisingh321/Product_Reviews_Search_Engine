@@ -74,11 +74,10 @@ def index():
                 reviews.append(mydict)
             logging.info("log my final result {}".format(reviews))
 
-            
-            client = pymongo.MongoClient("mongodb+srv://pwskills:pwskills@cluster0.ln0bt5m.mongodb.net/?retryWrites=true&w=majority")
-            db =client['scrapper_eng_pwskills']
-            coll_pw_eng = db['scraper_pwskills_eng']
-            coll_pw_eng.insert_many(reviews)
+            client = pymongo.MongoClient("mongodb+srv://mansisingh:mansi123@cluster0.61zpgvj.mongodb.net/?retryWrites=true&w=majority")
+            db =client['Customer_reviews']
+            coll = db['Customer_Product_reviews']
+            coll.insert_many(reviews)
 
             return render_template('result.html', reviews=reviews[0:(len(reviews)-1)])
         except Exception as e:
@@ -91,4 +90,4 @@ def index():
 
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=8000)
